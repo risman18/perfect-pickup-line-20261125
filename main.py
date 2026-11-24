@@ -26,6 +26,9 @@ ENTRY = (
 
 
 def main() -> None:
+    # Guard the competition's hard limit: the entry must be a non-empty
+    # line of at most 200 characters (ours is 81), checked before writing.
+    assert 1 <= len(ENTRY) <= 200, f"entry length {len(ENTRY)} out of range"
     os.makedirs("/output", exist_ok=True)
     with open("/output/entry.txt", "w", encoding="utf-8") as f:
         f.write(ENTRY + "\n")
